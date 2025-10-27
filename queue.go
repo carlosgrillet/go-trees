@@ -25,6 +25,20 @@ func (q *Queue[T]) Next() (T, bool) {
 	return next, true
 }
 
+// Peek return what is the next element in the queue without removing it
+func (q *Queue[T]) Peek() (T, bool) {
+	var zero T
+	if len(q.elements) == 0 {
+		return zero, false
+	}
+	return q.elements[0], true
+}
+
+// Clear remove all elements from the queue
+func (q *Queue[T]) Clear() {
+	q.elements = []T{}
+}
+
 // Len return the current lenght of the queue
 func (q *Queue[T]) Len() int {
 	return len(q.elements)
